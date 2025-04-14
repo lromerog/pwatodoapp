@@ -1,34 +1,48 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'robots.txt'],
       manifest: {
-        name: 'Todo PWA',
-        short_name: 'Todo',
-        description: 'Simple todo PWA',
-        theme_color: '#ffffff',
-        background_color: '#f9fafb',
-        display: 'standalone',
+        name: 'Todo App',
+        short_name: 'Todos',
         start_url: '/',
+        theme_color: '#0F172A',
+        background_color: '#FFFFFF',
+        display: 'standalone',
         icons: [
-          {
-            src: '/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
-    })
-  ]
-})
+  {
+    src: '/icon-192x192.png',
+    sizes: '192x192',
+    type: 'image/png',
+    purpose: 'any', // Agregado
+  },
+  {
+    src: '/icon-512x512.png',
+    sizes: '512x512',
+    type: 'image/png',
+    purpose: 'any', // Agregado
+  },
+],
+  screenshots: [
+  {
+    src: '/screenshot-narrow.png',
+    sizes: '720x1080',
+    type: 'image/png',
+    form_factor: 'narrow',
+  },
+  {
+    src: '/screenshot-wide.png',
+    sizes: '720x1080', // Cambiado de 1280x720 a 720x1080
+    type: 'image/png',
+    form_factor: 'wide',
+  },
+],
+      },
+    }),
+  ],
+});
